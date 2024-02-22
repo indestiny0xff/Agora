@@ -54,7 +54,8 @@ This command will show ransomware attacks involving the LockBit variant reported
     --end-date: Filter until this date (YYYY-MM-DD).
     --verbose: For more detailed information.
 
-### Installation
+
+## Installation
 
 To install the required dependencies, simply run:
 

@@ -186,11 +186,11 @@ def main():
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
             end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:
-                print(colored(f"🔍 Results from news source '{source}' with the keyword '{args.keyword}':", "blue"))
+                print(colored(f"📰 Results from news source '{source}' with the keyword '{args.keyword}':", "blue"))
                 display_filtered_feed(news_url, args.keyword, start_date, end_date,verbose = args.verbose)
                 print()
             else:
-                print(colored(f"🔍 Results from news source '{source}':", "blue"))
+                print(colored(f"📰 Results from news source '{source}':", "blue"))
                 display_filtered_feed(news_url, None, start_date, end_date,verbose = args.verbose)
                 print()
 

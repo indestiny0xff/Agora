@@ -60,6 +60,7 @@ This command will show ransomware attacks involving the LockBit variant reported
 To install the required dependencies, simply run:
 
 ```bash
+git clone https://github.com/WOthm/Agora.git
 pip install -r requirements.txt
 ```
 Let AGORA Be Your Cyber Guide!

@@ -52,7 +52,8 @@ cve_feeds = {
 }
 
 leak_feeds = {
-    "Leak-lookup": "https://leak-lookup.com/rss"
+    "Leak-lookup": "https://leak-lookup.com/rss",
+    "Data-breaches": "https://www.databreaches.net/feed/"
 }
 
 ransom_feeds = {

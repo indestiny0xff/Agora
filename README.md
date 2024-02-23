@@ -2,8 +2,6 @@
 
 Welcome to AGORA, your one-stop destination for all things cybersecurity! 🚀
 
-Are you tired of endlessly scrolling through various websites, blogs, and feeds to stay updated on the latest cyber threats, vulnerabilities, leaks, and ransomware attacks? Fear not! AGORA is here to save your day, providing you with curated and filtered information from a plethora of sources, all in one place! 
-
 ## What Does AGORA Offer?
 
     News Galore! 📰: Dive into the latest cybersecurity news from renowned sources like TheHackerNews, Threatpost, KrebsOnSecurity, and many more!

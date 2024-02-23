@@ -48,11 +48,11 @@ news_feeds = {
 }   
 
 cve_feeds = {
-    "cisa": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+    "Cisa": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
 }
 
 leak_feeds = {
-    "leak-lookup": "https://leak-lookup.com/rss"
+    "Leak-lookup": "https://leak-lookup.com/rss"
 }
 
 ransom_feeds = {

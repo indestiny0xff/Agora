@@ -61,6 +61,7 @@ To install the required dependencies, simply run:
 
 ```bash
 git clone https://github.com/WOthm/Agora.git
+cd Agora
 pip install -r requirements.txt
 ```
 Let AGORA Be Your Cyber Guide!

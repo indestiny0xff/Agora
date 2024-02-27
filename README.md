@@ -18,12 +18,12 @@ AGORA is as easy as pie to use! Simply run the program with a few command-line a
 
 ### Example 1: Fetch Cybersecurity News
 ```bash
-python agora.py --argument news --keyword "cybersecurity" --start-date "2023-01-01" --end-date "2024-01-01" --verbose
+python Agora.py --argument news --keyword "Sandworm" --start-date "2023-01-01" --end-date "2024-01-01" --verbose
 ```
 ### Example 2: Explore CVEs
 
 ```bash
-python agora.py --argument cve --keyword "Ivanti" --start-date "2023-01-01" --end-date "2023-12-31" --verbose
+python Agora.py --argument cve --keyword "Fortinet" --start-date "2023-01-01" --end-date "2023-12-31" --verbose
 ```
 
 This command will display CVEs related to exploits reported in 2023 with detailed descriptions.
@@ -31,7 +31,7 @@ This command will display CVEs related to exploits reported in 2023 with detaile
 ### Example 3: Investigate Leaks
 
 ```bash
-python agora.py --argument leak --start-date "2023-01-01" --end-date "2023-12-31" --verbose
+python Agora.py --argument leak --start-date "2023-01-01" --end-date "2023-12-31" --verbose
 ```
 
 This command will provide information about data breaches and leaks reported in 2023 with verbose descriptions.  
@@ -39,7 +39,7 @@ This command will provide information about data breaches and leaks reported in 
 ### Example 4: Monitor Ransomware
 
 ```bash
-python agora.py --argument ransom --keyword "LockBit" --start-date "2023-01-01" --end-date "2023-12-31" --verbose
+python Agora.py --argument ransom --keyword "LockBit" --start-date "2023-01-01" --end-date "2023-12-31" --verbose
 ```
 
 This command will show ransomware attacks involving the LockBit variant reported in 2023 with detailed information.  

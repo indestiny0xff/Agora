@@ -23,8 +23,6 @@ news_feeds = {
     "Sentinelone": "https://fr.sentinelone.com/blog/feed/",
     "Threatpost": "https://threatpost.com/feed",
     "KrebsOnSecurity": "https://krebsonsecurity.com/feed/", 
-    "Talos": "https://blog.talosintelligence.com/rss/",
-    "Securelist": "https://securelist.com/feed/",
     "Microsoft": "https://www.microsoft.com/en-us/security/blog/feed/",
     "Microsoftthreathunting": "https://msrc.microsoft.com/blog/categories/microsoft-threat-hunting/feed",
     "Itguru": "https://www.itsecurityguru.org/feed/",
@@ -44,22 +42,37 @@ news_feeds = {
     "Helpnetsecurity": "https://www.helpnetsecurity.com/feed/",
     "Coveware": "https://www.coveware.com/blog?format=RSS",
     "BleepingComputer" : "https://www.bleepingcomputer.com/feed/",
-    "Thedefirreport" : "https://thedfirreport.com/feed/"
+    "Seqwrite": "https://www.seqrite.com/blog/tag/ransomware/feed/"
 }   
 
 cve_feeds = {
-    "Cisa": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+    "cisa": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
 }
 
 leak_feeds = {
-    "Leak-lookup": "https://leak-lookup.com/rss",
-    "Data-breaches": "https://www.databreaches.net/feed/"
+    "leak-lookup": "https://leak-lookup.com/rss"
 }
 
 ransom_feeds = {
     "Ransomwarelive": "https://ransomware.live/rss.xml",
     "Redpacket": "https://www.redpacketsecurity.com/feed/",
     "Ransomlookup": "https://www.ransomlook.io/rss.xml"
+}
+
+technical_feeds = {
+    "Rapid7": "https://blog.rapid7.com/rss/",
+    "Secureblink": "https://www.secureblink.com/rss-feeds/threat-research",
+    "Assetnote": "https://blog.assetnote.io/feed.xml",
+    "Talos": "https://blog.talosintelligence.com/rss/",
+    "Securelist": "https://securelist.com/feed/",
+    "Thedefirreport" : "https://thedfirreport.com/feed/",
+    "Cyberwatch": "https://cyberwatch.fr/feed/",
+    "Sensepost": "https://sensepost.com/rss.xml",
+    "Spectrops": "https://posts.specterops.io/feed",
+    "Trendmicro": "http://feeds.trendmicro.com/TrendMicroSimplySecurity",
+    "Unit42": "http://researchcenter.paloaltonetworks.com/unit42/feed/",
+    "Phishlabs": "http://blog.phishlabs.com/rss.xml",
+    "Virusbulletin": "https://www.virusbulletin.com/rss"
 }
 
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, page_size=10):
@@ -162,7 +175,7 @@ def display_filtered_json(json_url, keyword=None, start_date=None, end_date=None
 
 def main():
     parser = argparse.ArgumentParser(description="AGORA: Fetch and display information about cybersecurity news from various sources including articles, CVEs, ransomware attacks, and leaks, with filtering by keyword and date.")
-    parser.add_argument("--argument",choices=["news","cve","leak","ransom"],help="choose between news, cve and leak")
+    parser.add_argument("--argument",choices=["news","cve","leak","ransom","technical"],help="choose between news, cve and leak")
     parser.add_argument("--verbose",help="For more details",action="store_true")
     parser.add_argument("--keyword", default="", help="Filter by keyword in the title")
     parser.add_argument("--start-date", help="Filter from this date (in 'YYYY-MM-DD' format)")
@@ -240,6 +253,22 @@ def main():
                 display_filtered_feed(ransom_url, None, start_date, end_date,verbose = args.verbose)
                 print()
 
+    if args.argument  == "technical":
+        technical_sources = technical_feeds.keys()
+        for source in technical_sources:
+            technical_url = technical_feeds[source]
+            start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
+            end_date =  datetime.strptime(args.end_date, "%Y-m-%d") if args.end_date else None
+            if args.keyword:
+                print(colored(f"💿 Results from technical source '{source}' with the keyword '{args.keyword}':", "magenta"))
+                display_filtered_feed(technical_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                print()
+            else:
+                print(colored(f"💿 Results from technical source '{source}':", "magenta"))
+                display_filtered_feed(technical_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                print()
+
 if __name__ == "__main__":
     print()
     main()  
+

@@ -80,11 +80,11 @@ def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verb
         feed = feedparser.parse(rss_url)
         entries = []
         for entry in feed.entries:
-            title = entry.title
-            description = entry.description
-            author = entry.author if 'author' in entry else 'unknown author '
-            date = entry.published
-            link = entry.link
+            title = entry.title if 'title' in entry else 'unknown title'
+            description = entry.description if 'description' in entry else 'unknown description'
+            author = entry.author if 'author' in entry else 'unknown author'
+            date = entry.published if 'published' in entry else 'unknown date'
+            link = entry.link if 'link' in entry else 'unknown link'
 
             date_match = re.search(r'\d{2} \w{3} \d{4} \d{2}:\d{2}:\d{2}', date)
             if date_match:
@@ -268,7 +268,9 @@ def main():
                 display_filtered_feed(technical_url, args.keyword, start_date, end_date, verbose = args.verbose)
                 print()
 
+
 if __name__ == "__main__":
     print()
     main()  
+
 

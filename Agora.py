@@ -42,7 +42,8 @@ news_feeds = {
     "Helpnetsecurity": "https://www.helpnetsecurity.com/feed/",
     "Coveware": "https://www.coveware.com/blog?format=RSS",
     "BleepingComputer" : "https://www.bleepingcomputer.com/feed/",
-    "Seqwrite": "https://www.seqrite.com/blog/tag/ransomware/feed/"
+    "Seqwrite": "https://www.seqrite.com/blog/tag/ransomware/feed/",
+    "Hkcert": "https://www.hkcert.org/getrss/security-bulletin"
 }   
 
 cve_feeds = {
@@ -50,7 +51,8 @@ cve_feeds = {
 }
 
 leak_feeds = {
-    "leak-lookup": "https://leak-lookup.com/rss"
+    "leak-lookup": "https://leak-lookup.com/rss",
+    "breach-feed": "https://www.upguard.com/breaches/rss.xml"
 }
 
 ransom_feeds = {
@@ -72,7 +74,13 @@ technical_feeds = {
     "Trendmicro": "http://feeds.trendmicro.com/TrendMicroSimplySecurity",
     "Unit42": "http://researchcenter.paloaltonetworks.com/unit42/feed/",
     "Phishlabs": "http://blog.phishlabs.com/rss.xml",
-    "Virusbulletin": "https://www.virusbulletin.com/rss"
+    "Virusbulletin": "https://www.virusbulletin.com/rss",
+    "Morphisec": "https://blog.morphisec.com/rss.xml",
+    "Labsnettitude": "https://labs.nettitude.com/feed/",
+    "Deppendresearch": "http://www.deependresearch.org/rss.xml",
+    "Secplicity": "https://www.secplicity.org/feed/",
+    "IntergoMac": "https://www.intego.com/mac-security-blog"
+   
 }
 
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, page_size=10):

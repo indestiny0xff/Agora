@@ -44,6 +44,13 @@ python Agora.py --argument ransom --keyword "LockBit" --start-date "2023-01-01" 
 
 This command will show ransomware attacks involving the LockBit variant reported in 2023 with detailed information.  
 
+### Example 5: Monitor Technical review
+
+```bash
+python Agora.py --argument technical --keyword "CVE-2024-3400" --start-date "2024-01-01" --end-date "2024-06-31" --verbose
+```
+
+This command will show technicals reviews found while searching for CVE-2024-3400 with detailed information. 
 ### Command-Line Arguments
 
     --argument: Choose between news, CVE, leak, or ransom.

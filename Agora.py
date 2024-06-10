@@ -79,8 +79,12 @@ technical_feeds = {
     "Labsnettitude": "https://labs.nettitude.com/feed/",
     "Deppendresearch": "http://www.deependresearch.org/rss.xml",
     "Secplicity": "https://www.secplicity.org/feed/",
-    "IntergoMac": "https://www.intego.com/mac-security-blog"
-   
+    "IntergoMac": "https://www.intego.com/mac-security-blog",
+    "Blackkite": "https://blackkite.com/feed/",
+    "Phoenixsecurity": "https://phoenix.security/feed/",
+    "Veloxity": "https://www.volexity.com/feed",
+    "Catonetworks": "https://www.catonetworks.com/feed/",
+    "Watchtowr": "https://labs.watchtowr.com/rss/"
 }
 
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, page_size=10):

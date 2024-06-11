@@ -19,6 +19,10 @@ agora_ascii_art = """
 """
 
 news_feeds = {
+    "Therecordmedia": "https://therecord.media/feed",
+    "TheCyberExpress": "https://thecyberexpress.com/feed/",
+    "Securityaffairs": "https://securityaffairs.com/feed",
+    "Securityweek": "https://www.securityweek.com/feed/",
     "TheHackerNews": "https://feeds.feedburner.com/TheHackersNews",
     "Sentinelone": "https://fr.sentinelone.com/blog/feed/",
     "Threatpost": "https://threatpost.com/feed",
@@ -43,7 +47,8 @@ news_feeds = {
     "Coveware": "https://www.coveware.com/blog?format=RSS",
     "BleepingComputer" : "https://www.bleepingcomputer.com/feed/",
     "Seqwrite": "https://www.seqrite.com/blog/tag/ransomware/feed/",
-    "Hkcert": "https://www.hkcert.org/getrss/security-bulletin"
+    "Hkcert": "https://www.hkcert.org/getrss/security-bulletin",
+    "Enisa": "https://www.enisa.europa.eu/atom.xml"
 }   
 
 cve_feeds = {

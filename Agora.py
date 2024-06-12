@@ -56,8 +56,8 @@ cve_feeds = {
 }
 
 leak_feeds = {
-    "leak-lookup": "https://leak-lookup.com/rss",
-    "breach-feed": "https://www.upguard.com/breaches/rss.xml"
+    "Leak-lookup": "https://leak-lookup.com/rss",
+    "Breach-feed": "https://www.upguard.com/breaches/rss.xml"
 }
 
 ransom_feeds = {
@@ -65,9 +65,22 @@ ransom_feeds = {
     "Redpacket": "https://www.redpacketsecurity.com/feed/",
     "Ransomlookup": "https://www.ransomlook.io/rss.xml"
 }
+osint_feeds = {
+   "Belligcat": "https://www.bellingcat.com/feed",
+   "Citizenlabs": "https://citizenlab.ca/feed/",
+   "Inteltechniques": "https://inteltechniques.com/blog/feed/",
+   "Authentic8": "https://www.authentic8.com/rss.xml",
+   "Exposingtheinvisible": "https://exposingtheinvisible.org/rss.xml",
+   "Skopenow": "https://www.skopenow.com/news/rss.xml",
+   "Geoint": "https://geoint.blog/feed/",
+   "Osintcombine": "https://www.osintcombine.com/blog-feed.xml",
+   "Bushidotoken": "https://blog.bushidotoken.net/",
+   "RedditOSINT": "https://www.reddit.com/r/OSINT/new.rss"
+}
 
-technical_feeds = {
+threat_intel_feeds = {
     "Rapid7": "https://blog.rapid7.com/rss/",
+    "Flashpoint": "https://flashpoint.io/feed",
     "Secureblink": "https://www.secureblink.com/rss-feeds/threat-research",
     "Assetnote": "https://blog.assetnote.io/feed.xml",
     "Talos": "https://blog.talosintelligence.com/rss/",
@@ -89,7 +102,10 @@ technical_feeds = {
     "Phoenixsecurity": "https://phoenix.security/feed/",
     "Veloxity": "https://www.volexity.com/feed",
     "Catonetworks": "https://www.catonetworks.com/feed/",
-    "Watchtowr": "https://labs.watchtowr.com/rss/"
+    "Watchtowr": "https://labs.watchtowr.com/rss/",
+    "Securityboulevard": "https://securityboulevard.com/feed/",
+    "Intrinsec": "https://www.intrinsec.com/feed/",
+    "Sekoia": "https://blog.sekoia.io/feed/"
 }
 
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, page_size=10):
@@ -192,7 +208,7 @@ def display_filtered_json(json_url, keyword=None, start_date=None, end_date=None
 
 def main():
     parser = argparse.ArgumentParser(description="AGORA: Fetch and display information about cybersecurity news from various sources including articles, CVEs, ransomware attacks, and leaks, with filtering by keyword and date.")
-    parser.add_argument("--argument",choices=["news","cve","leak","ransom","technical"],help="choose between news, cve and leak")
+    parser.add_argument("--argument",choices=["news","cve","leak","ransom","threat_intel","osint"],help="choose between news, cve and leak")
     parser.add_argument("--verbose",help="For more details",action="store_true")
     parser.add_argument("--keyword", default="", help="Filter by keyword in the title")
     parser.add_argument("--start-date", help="Filter from this date (in 'YYYY-MM-DD' format)")
@@ -270,21 +286,35 @@ def main():
                 display_filtered_feed(ransom_url, None, start_date, end_date,verbose = args.verbose)
                 print()
 
-    if args.argument  == "technical":
-        technical_sources = technical_feeds.keys()
-        for source in technical_sources:
-            technical_url = technical_feeds[source]
+    if args.argument  == "threat_intel":
+        threat_intel_sources = threat_intel_feeds.keys()
+        for source in threat_intel_sources:
+            threat_intel_url = threat_intel_feeds[source]
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
             end_date =  datetime.strptime(args.end_date, "%Y-m-%d") if args.end_date else None
             if args.keyword:
                 print(colored(f"💿 Results from technical source '{source}' with the keyword '{args.keyword}':", "magenta"))
-                display_filtered_feed(technical_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                display_filtered_feed(threat_intel_url, args.keyword, start_date, end_date, verbose = args.verbose)
                 print()
             else:
                 print(colored(f"💿 Results from technical source '{source}':", "magenta"))
-                display_filtered_feed(technical_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                display_filtered_feed(threat_intel_url, args.keyword, start_date, end_date, verbose = args.verbose)
                 print()
-
+               
+    if args.argument  == "osint":
+        osint_sources = threat_intel_feeds.keys()
+        for source in osint_sources:
+            threat_intel_url = threat_intel_feeds[source]
+            start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
+            end_date =  datetime.strptime(args.end_date, "%Y-m-%d") if args.end_date else None
+            if args.keyword:
+                print(colored(f"💿 Results from technical source '{source}' with the keyword '{args.keyword}':", "cyan"))
+                display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                print()
+            else:
+                print(colored(f"💿 Results from technical source '{source}':", "cyan"))
+                display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                print()
 
 if __name__ == "__main__":
     print()

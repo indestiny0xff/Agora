@@ -125,8 +125,8 @@ def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verb
                 entry_date = datetime.strptime(date, "%d %b %Y %H:%M:%S")
 
             if not keyword or keyword.lower() in title.lower():
-                if start_date is None or entry_date >= start_date:
-                    if end_date is None or entry_date <= end_date:
+                if start_date is None or entry_date and entry_date >= start_date:
+                    if end_date is None or entry date and entry_date <= end_date:
                         entries.append({
                             "title": title,
                             "description": description,

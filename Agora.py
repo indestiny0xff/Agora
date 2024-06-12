@@ -302,9 +302,9 @@ def main():
                 print()
                
     if args.argument  == "osint":
-        osint_sources = threat_intel_feeds.keys()
+        osint_sources = osint_feeds.keys()
         for source in osint_sources:
-            threat_intel_url = threat_intel_feeds[source]
+            osint_url = osint_feeds[source]
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
             end_date =  datetime.strptime(args.end_date, "%Y-m-%d") if args.end_date else None
             if args.keyword:

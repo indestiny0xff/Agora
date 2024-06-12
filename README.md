@@ -50,7 +50,7 @@ This command will show ransomware attacks involving the LockBit variant reported
 python Agora.py --argument threat_intel --start-date "2024-01-01" --end-date "2024-06-31" --verbose
 ```
 
-This command will show technicals reviews found while searching for CVE-2024-3400 with detailed information. 
+This command will show threat intel articles. 
 
 ### Example 6: Monitor OSINT
 
@@ -58,7 +58,7 @@ This command will show technicals reviews found while searching for CVE-2024-340
 python Agora.py --argument osint --start-date "2024-01-01" --end-date "2024-06-31" --verbose
 ```
 
-This command will show technicals reviews found while searching for CVE-2024-3400 with detailed information. 
+This command will show OSINT articles.
 
 ### Command-Line Arguments
 

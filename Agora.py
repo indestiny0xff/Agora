@@ -90,7 +90,6 @@ threat_intel_feeds = {
     "Talos": "https://blog.talosintelligence.com/rss/",
     "Securelist": "https://securelist.com/feed/",
     "Thedefirreport" : "https://thedfirreport.com/feed/",
-    "Cyberwatch": "https://cyberwatch.fr/feed/",
     "Sensepost": "https://sensepost.com/rss.xml",
     "Spectrops": "https://posts.specterops.io/feed",
     "Trendmicro": "http://feeds.trendmicro.com/TrendMicroSimplySecurity",

@@ -293,11 +293,11 @@ def main():
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
             end_date =  datetime.strptime(args.end_date, "%Y-m-%d") if args.end_date else None
             if args.keyword:
-                print(colored(f"💿 Results from technical source '{source}' with the keyword '{args.keyword}':", "magenta"))
+                print(colored(f"💿 Results from threat intel source '{source}' with the keyword '{args.keyword}':", "magenta"))
                 display_filtered_feed(threat_intel_url, args.keyword, start_date, end_date, verbose = args.verbose)
                 print()
             else:
-                print(colored(f"💿 Results from technical source '{source}':", "magenta"))
+                print(colored(f"💿 Results from threat intel source '{source}':", "magenta"))
                 display_filtered_feed(threat_intel_url, args.keyword, start_date, end_date, verbose = args.verbose)
                 print()
                
@@ -308,11 +308,11 @@ def main():
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
             end_date =  datetime.strptime(args.end_date, "%Y-m-%d") if args.end_date else None
             if args.keyword:
-                print(colored(f"💿 Results from technical source '{source}' with the keyword '{args.keyword}':", "cyan"))
+                print(colored(f"💀 Results from osint source '{source}' with the keyword '{args.keyword}':", "cyan"))
                 display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose = args.verbose)
                 print()
             else:
-                print(colored(f"💿 Results from technical source '{source}':", "cyan"))
+                print(colored(f"💀 Results from osint source '{source}':", "cyan"))
                 display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose = args.verbose)
                 print()
 

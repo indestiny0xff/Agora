@@ -80,6 +80,8 @@ osint_feeds = {
 
 threat_intel_feeds = {
     "Rapid7": "https://blog.rapid7.com/rss/",
+    "Resecurity": "https://www.resecurity.com/feed",
+    "Trustwave": "https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/rss.xml",
     "Flashpoint": "https://flashpoint.io/feed",
     "Secureblink": "https://www.secureblink.com/rss-feeds/threat-research",
     "Assetnote": "https://blog.assetnote.io/feed.xml",

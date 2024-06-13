@@ -48,7 +48,8 @@ news_feeds = {
     "BleepingComputer" : "https://www.bleepingcomputer.com/feed/",
     "Seqwrite": "https://www.seqrite.com/blog/tag/ransomware/feed/",
     "Hkcert": "https://www.hkcert.org/getrss/security-bulletin",
-    "Enisa": "https://www.enisa.europa.eu/atom.xml"
+    "Enisa": "https://www.enisa.europa.eu/atom.xml",
+    "Securityboulevard": "https://securityboulevard.com/feed/",
 }   
 
 cve_feeds = {
@@ -111,7 +112,6 @@ threat_intel_feeds = {
     "Veloxity": "https://www.volexity.com/feed",
     "Catonetworks": "https://www.catonetworks.com/feed/",
     "Watchtowr": "https://labs.watchtowr.com/rss/",
-    "Securityboulevard": "https://securityboulevard.com/feed/",
     "Intrinsec": "https://www.intrinsec.com/feed/",
     "Sekoia": "https://blog.sekoia.io/feed/"
 }

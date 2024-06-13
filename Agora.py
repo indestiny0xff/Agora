@@ -49,7 +49,7 @@ news_feeds = {
     "Seqwrite": "https://www.seqrite.com/blog/tag/ransomware/feed/",
     "Hkcert": "https://www.hkcert.org/getrss/security-bulletin",
     "Enisa": "https://www.enisa.europa.eu/atom.xml",
-    "Securityboulevard": "https://securityboulevard.com/feed/",
+    "Securityboulevard": "https://securityboulevard.com/feed/"
 }   
 
 cve_feeds = {

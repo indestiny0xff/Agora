@@ -79,6 +79,9 @@ osint_feeds = {
 }
 
 threat_intel_feeds = {
+    "Harfanglab": "https://harfanglab.io/en/insidethelab/feed/",
+    "Kelacyber": "https://www.kelacyber.com/feed/",
+    "Malwarebytes: "https://www.malwarebytes.com/blog/feed/index.xml",
     "Rapid7": "https://blog.rapid7.com/rss/",
     "Asec": "https://asec.ahnlab.com/en/feed/",
     "Imperva": "https://www.imperva.com/blog/feed/",

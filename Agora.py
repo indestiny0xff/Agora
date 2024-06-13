@@ -81,6 +81,7 @@ osint_feeds = {
 threat_intel_feeds = {
     "Rapid7": "https://blog.rapid7.com/rss/",
     "Asec": "https://asec.ahnlab.com/en/feed/",
+    "Russianpanda": "https://russianpanda.com/feed.xml",
     "Elastic": "https://www.elastic.co/security-labs/rss/feed.xml",
     "Resecurity": "https://www.resecurity.com/feed",
     "Trustwave": "https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/rss.xml",

@@ -89,6 +89,7 @@ threat_intel_feeds = {
     "Asec": "https://asec.ahnlab.com/en/feed/",
     "Imperva": "https://www.imperva.com/blog/feed/",
     "Russianpanda": "https://russianpanda.com/feed.xml",
+    "Chomp": "https://chomp.ie/rss.xml",
     "Elastic": "https://www.elastic.co/security-labs/rss/feed.xml",
     "Resecurity": "https://www.resecurity.com/feed",
     "Trustwave": "https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/rss.xml",
@@ -118,7 +119,7 @@ threat_intel_feeds = {
     "Sekoia": "https://blog.sekoia.io/feed/"
 }
 
-def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, page_size=10):
+def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, json_output=False, page_size=10):
     try:
         feed = feedparser.parse(rss_url)
         entries = []
@@ -133,10 +134,15 @@ def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verb
             if date_match:
                 date = date_match.group(0)
                 entry_date = datetime.strptime(date, "%d %b %Y %H:%M:%S")
+            else:
+                # Handle case where date doesn't match expected format
+                entry_date = None  # or some default date handling logic
 
-            if not keyword or keyword.lower() in title.lower():
-                if start_date is None or entry_date and entry_date >= start_date:
-                    if end_date is None or entry_date and entry_date <= end_date:
+            if (not keyword or
+                keyword.lower() in title.lower() or
+                keyword.lower() in description.lower()):
+                if start_date is None or (entry_date and entry_date >= start_date):
+                    if end_date is None or (entry_date and entry_date <= end_date):
                         entries.append({
                             "title": title,
                             "description": description,
@@ -145,11 +151,15 @@ def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verb
                             "link": link
                         })
 
+        if json_output:
+            return entries
+
         total_pages = (len(entries) + page_size - 1) // page_size
         current_page = 0
         while current_page < total_pages:
             for i in range(current_page * page_size, min((current_page + 1) * page_size, len(entries))):
                 entry = entries[i]
+                print(entry)
                 print("Title:", entry['title'])
                 if verbose:
                     print("Description:", entry['description'])
@@ -167,7 +177,7 @@ def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verb
     except Exception as e:
         print(f"An error occurred: {e}")
 
-def display_filtered_json(json_url, keyword=None, start_date=None, end_date=None, verbose=False, page_size=10):
+def display_filtered_json(json_url, keyword=None, start_date=None, end_date=None, verbose=False, json_output=False, page_size=10):
     try:
         data = requests.get(json_url).json()
         vulnerabilities = []
@@ -194,6 +204,9 @@ def display_filtered_json(json_url, keyword=None, start_date=None, end_date=None
                         "date_added": date_added.strftime("%Y-%m-%d") if date_added else "",
                         "description": description
                     })
+                           
+            if json_output:
+               return vulnerabilities
 
         total_pages = (len(vulnerabilities) + page_size - 1) // page_size
         current_page = 0
@@ -223,6 +236,7 @@ def main():
     parser.add_argument("--keyword", default="", help="Filter by keyword in the title")
     parser.add_argument("--start-date", help="Filter from this date (in 'YYYY-MM-DD' format)")
     parser.add_argument("--end-date", help="Filter until this date (in 'YYYY-MM-DD' format)")
+    parser.add_argument("--json", metavar='FILENAME', help="Output results to a JSON file")
     parser.add_argument("-help", action="help", help="Display help message")
 
     args = parser.parse_args()
@@ -234,22 +248,29 @@ def main():
         return
 
     print(agora_ascii_art)
-   
+
+    results = []
+    
+    if args.json:
+        filename = args.json
+
 
     if args.argument == "news":
         news_sources = news_feeds.keys()
-        for source in  news_sources:
+        for source in news_sources:
             news_url = news_feeds[source]
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
             end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:
                 print(colored(f"📰 Results from news source '{source}' with the keyword '{args.keyword}':", "blue"))
-                display_filtered_feed(news_url, args.keyword, start_date, end_date,verbose = args.verbose)
+                source_results = display_filtered_feed(news_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             else:
                 print(colored(f"📰 Results from news source '{source}':", "blue"))
-                display_filtered_feed(news_url, None, start_date, end_date,verbose = args.verbose)
+                source_results = display_filtered_feed(news_url, None, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
+            if args.json and source_results:
+                results.extend(source_results)
 
     if args.argument == "cve":
         cve_sources = cve_feeds.keys()
@@ -259,12 +280,14 @@ def main():
             end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:
                 print(colored(f"💣 Results from CVE source '{source}' with the keyword '{args.keyword}':", "red"))
-                display_filtered_json(cve_url, args.keyword, start_date, end_date,verbose = args.verbose)
+                source_results = display_filtered_json(cve_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             else:
                 print(colored(f"💣 Results from CVE source '{source}':", "red"))
-                display_filtered_json(cve_url, None, start_date, end_date,verbose = args.verbose)
+                source_results = display_filtered_json(cve_url, None, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
+            if args.json and source_results:
+                results.extend(source_results)
 
     if args.argument == "leak":
         leak_sources = leak_feeds.keys()
@@ -274,12 +297,14 @@ def main():
             end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:
                 print(colored(f"🕵️ Results from leak source '{source}' with the keyword '{args.keyword}':", "green"))
-                display_filtered_feed(leak_url, keyword=None, start_date=None, end_date=None,verbose = args.verbose)
+                source_results = display_filtered_feed(leak_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             else:
                 print(colored(f"🕵️ Results from leak source '{source}':", "green"))
-                display_filtered_feed(leak_url, None, start_date, end_date,verbose = args.verbose)
+                source_results = display_filtered_feed(leak_url, None, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
+            if args.json and source_results:
+                results.extend(source_results)
 
     if args.argument == "ransom":
         ransom_sources = ransom_feeds.keys()
@@ -289,42 +314,52 @@ def main():
             end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:
                 print(colored(f"🔒 Results from ransom source '{source}' with the keyword '{args.keyword}':", "yellow"))
-                display_filtered_feed(ransom_url, args.keyword, start_date, end_date,verbose = args.verbose)
+                source_results = display_filtered_feed(ransom_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             else:
                 print(colored(f"🔒 Results from ransom source '{source}':", "yellow"))
-                display_filtered_feed(ransom_url, None, start_date, end_date,verbose = args.verbose)
+                source_results = display_filtered_feed(ransom_url, None, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
+            if args.json and source_results:
+                results.extend(source_results)
 
-    if args.argument  == "threat_intel":
+    if args.argument == "threat_intel":
         threat_intel_sources = threat_intel_feeds.keys()
         for source in threat_intel_sources:
             threat_intel_url = threat_intel_feeds[source]
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
-            end_date =  datetime.strptime(args.end_date, "%Y-m-%d") if args.end_date else None
+            end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:
                 print(colored(f"💿 Results from threat intel source '{source}' with the keyword '{args.keyword}':", "magenta"))
-                display_filtered_feed(threat_intel_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                source_results = display_filtered_feed(threat_intel_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             else:
                 print(colored(f"💿 Results from threat intel source '{source}':", "magenta"))
-                display_filtered_feed(threat_intel_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                source_results = display_filtered_feed(threat_intel_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
-               
-    if args.argument  == "osint":
+            if args.json and source_results:
+                results.extend(source_results)
+
+    if args.argument == "osint":
         osint_sources = osint_feeds.keys()
         for source in osint_sources:
             osint_url = osint_feeds[source]
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
-            end_date =  datetime.strptime(args.end_date, "%Y-m-%d") if args.end_date else None
+            end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:
-                print(colored(f"💀 Results from osint source '{source}' with the keyword '{args.keyword}':", "cyan"))
-                display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                print(colored(f"💀 Results from OSINT source '{source}' with the keyword '{args.keyword}':", "cyan"))
+                source_results = display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             else:
-                print(colored(f"💀 Results from osint source '{source}':", "cyan"))
-                display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose = args.verbose)
+                print(colored(f"💀 Results from OSINT source '{source}':", "cyan"))
+                source_results = display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
+            if args.json and source_results:
+                results.extend(source_results)
+
+    if args.json and results:
+        with open(f'{filename}.json', 'w') as json_file:
+            json.dump(results, json_file, indent=4)
 
 if __name__ == "__main__":
     print()

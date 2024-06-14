@@ -159,7 +159,6 @@ def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verb
         while current_page < total_pages:
             for i in range(current_page * page_size, min((current_page + 1) * page_size, len(entries))):
                 entry = entries[i]
-                print(entry)
                 print("Title:", entry['title'])
                 if verbose:
                     print("Description:", entry['description'])

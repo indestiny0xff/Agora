@@ -58,7 +58,9 @@ cve_feeds = {
 
 leak_feeds = {
     "Leak-lookup": "https://leak-lookup.com/rss",
-    "Breach-feed": "https://www.upguard.com/breaches/rss.xml"
+    "Breach-feed": "https://www.upguard.com/breaches/rss.xml",
+    "Databreaches": "https://databreaches.net/feed/",
+    "Haveibeenpwned": "https://feeds.feedburner.com/HaveIBeenPwnedLatestBreaches"
 }
 
 ransom_feeds = {

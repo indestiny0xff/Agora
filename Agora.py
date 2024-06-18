@@ -116,7 +116,8 @@ threat_intel_feeds = {
     "Catonetworks": "https://www.catonetworks.com/feed/",
     "Watchtowr": "https://labs.watchtowr.com/rss/",
     "Intrinsec": "https://www.intrinsec.com/feed/",
-    "Sekoia": "https://blog.sekoia.io/feed/"
+    "Sekoia": "https://blog.sekoia.io/feed/",
+    "Risky": "https://news.risky.biz/rss/"
 }
 
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, json_output=False, page_size=10):

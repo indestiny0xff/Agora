@@ -121,6 +121,7 @@ threat_intel_feeds = {
     "Intrinsec": "https://www.intrinsec.com/feed/",
     "Sekoia": "https://blog.sekoia.io/feed/",
     "Risky": "https://news.risky.biz/rss/",
+    "Embeeresearch": "https://www.embeeresearch.io/rss/"
 }
 
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, json_output=False, page_size=10):

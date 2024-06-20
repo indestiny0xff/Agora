@@ -124,6 +124,74 @@ threat_intel_feeds = {
     "Embeeresearch": "https://www.embeeresearch.io/rss/"
 }
 
+fake_news_feeds = {
+    "Vududroit": "https://www.vududroit.com/feed/",
+    "Politique-actu": "https://www.politique-actu.com/rss/politique-actu.xml",
+    "Pressefiatlux": "https://presse.fiatlux.tk/feed/",
+    "Pressenza": "https://www.pressenza.com/feed/",
+    "Qactus": "https://qactus.fr/feed/",
+    "Reopen911": "http://feeds.reopen911.info/ReOpen911-Articles",
+    "Reseauinternational": "https://reseauinternational.net/feed/",
+    "Ripostelaique": "https://ripostelaique.com/feed",
+    "Reliable Recent News": "https://rrn.media/feed",
+    "Voltaire": "https://www.voltairenet.org/spip.php?page=backend&id_secteur=1110&lang=fr",
+    "Vigile.Quebec": "https://vigile.quebec/articles.rss",
+    "Valeriebugault": "https://valeriebugault.fr/feed",
+    "TVL": "https://tvl.fr/feed",
+    "Tribune-diplomatique": "https://tribune-diplomatique-internationale.com/feed/",
+    "Stratpol": "https://stratpol.com/feed/",
+    "Strategika": "https://strategika.fr/feed/",
+    "Sgtreport": "https://www.sgtreport.com/feed/",
+    "Ojim": "https://www.ojim.fr/feed/",
+    "Nouveau-monde": "https://nouveau-monde.ca/feed/",
+    "Polemia": "https://www.polemia.com/feed/",
+    "Les7duquebec": "https://les7duquebec.net/feed",
+    "Frontpopulaire": "https://frontpopulaire.fr/rss",
+    "Geopolintel": "https://geopolintel.fr/backend.php3",
+    "Geopolitics": "https://geopolitics.co/feed/",
+    "Geopragma": "https://geopragma.fr/feed/",
+    "Globalresearch": "https://www.globalresearch.ca/feed",
+    "Infodujour": "https://infodujour.fr/feed",
+    "Infotrad": "https://www.infotrad.fr/feed/",
+    "Investigaction": "https://investigaction.net/feed/",
+    "Lanceurdalerte": "https://www.lanceurdalerte.info/feed/",
+    "Lecourrierdesstrateges": "https://lecourrierdesstrateges.fr/feed/",
+    "Legrandsoir": "https://www.legrandsoir.info/spip.php?page=backend",
+    "Lemediaen422": "https://lemediaen442.fr/feed/",
+    "Francerussie": "https://francerussie-convergences.org/feed/",
+    "Lesakerfranco": "https://lesakerfrancophone.fr/feed",
+    "Les-crises-fr": "https://feeds.feedburner.com/les-crises-fr",
+    "ADNM": "https://adnm.live/feed/",
+    "Lesmoutonsenrages": "https://lesmoutonsenrages.fr/feed/",
+    "Lesobservateurs": "https://lesobservateurs.ch/accueil-2014/feed/",
+    "Minurne": "https://www.minurne.org/feed",
+    "Monde-diplo": "https://www.monde-diplomatique.fr/rss/",
+    "Mondialisation": "https://www.mondialisation.ca/feed",
+    "Newsbred": "https://www.newsbred.com/feed/",
+    "Newsnet": "http://newsnet.fr/rss",
+    "Eurolibertes": "https://eurolibertes.com/feed/",
+    "Sputnik": "https://fr.sputniknews.africa/export/rss2/archive/index.xml",
+    "Signedestemps": "https://fr.sott.net/xml/rss",
+    "RTfrance": "https://francais.rt.com/rss",
+    "CZ24": "https://cz24.news/feed/",
+    "Epochtime": "https://www.epochtimes.fr/feed",
+    "Bvoltaire": "https://www.bvoltaire.fr/feed/",
+    "Breizh-info": "https://www.breizh-info.com/feed/",
+    "RTEspagne""https://actualidad.rt.com/feeds/all.rss",
+    "Agoravox": "https://feeds.feedburner.com/agoravox/gEOF",
+    "Aktuelle-nachrichten": "https://aktuelle-nachrichten.app/feed/",
+    "Alpenschau": "https://alpenschau.com/feed/",
+    "Anonymousnews": "https://www.anonymousnews.org/feed/",
+    "Anti-spiegel": "https://anti-spiegel.ru/feed/",
+    "Apolut": "https://apolut.net/feed/",
+    "Arretsurinfo": "https://arretsurinfo.ch/feed/",
+    "Blauenarzisse": "https://www.blauenarzisse.de/feed/",
+    "Citoyens-et-francais": "https://www.citoyens-et-francais.fr/rss",
+    "Claude-rochet": "https://claude-rochet.fr/feed/",
+    "Compact-online": "https://www.compact-online.de/feed/",
+    "Crashdebug": "https://www.crashdebug.fr/index.php?format=feed&type=rss"
+}
+
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, json_output=False, page_size=10):
     try:
         feed = feedparser.parse(rss_url)
@@ -357,6 +425,23 @@ def main():
             else:
                 print(colored(f"💀 Results from OSINT source '{source}':", "cyan"))
                 source_results = display_filtered_feed(osint_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
+                print()
+            if args.json and source_results:
+                results.extend(source_results)
+               
+    if args.argument == "fake_news":
+        fake_news_sources = fake_news_feeds.keys()
+        for source in fake_news_sources:
+            fake_news_url = fake_news_feeds[source]
+            start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
+            end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
+            if args.keyword:
+                print(colored(f"👀 Results from fake news source '{source}' with the keyword '{args.keyword}':", "grey"))
+                source_results = display_filtered_feed(fake_news_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
+                print()
+            else:
+                print(colored(f"👀 Results from fake news source '{source}':", "grey"))
+                source_results = display_filtered_feed(fake_news_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             if args.json and source_results:
                 results.extend(source_results)

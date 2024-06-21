@@ -436,11 +436,11 @@ def main():
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
             end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:
-                print(colored(f"👀 Results from fake news source '{source}' with the keyword '{args.keyword}':", "grey"))
+                print(colored(f"👀 Results from fake news source '{source}' with the keyword '{args.keyword}':", "white"))
                 source_results = display_filtered_feed(fake_news_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             else:
-                print(colored(f"👀 Results from fake news source '{source}':", "grey"))
+                print(colored(f"👀 Results from fake news source '{source}':", "white"))
                 source_results = display_filtered_feed(fake_news_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
                 print()
             if args.json and source_results:

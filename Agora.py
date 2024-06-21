@@ -448,7 +448,7 @@ def main():
 
     if args.json and results:
         with open(f'{filename}.json', 'w') as json_file:
-            json.dump(results, json_file, indent=4)
+            json.dump(results, ensure_ascii=False, json_file, indent=4)
 
 if __name__ == "__main__":
     print()

@@ -303,7 +303,7 @@ def display_filtered_json(json_url, keyword=None, start_date=None, end_date=None
 
 def main():
     parser = argparse.ArgumentParser(description="AGORA: Fetch and display information about cybersecurity news from various sources including articles, CVEs, ransomware attacks, and leaks, with filtering by keyword and date.")
-    parser.add_argument("--argument",choices=["news","cve","leak","ransom","threat_intel","osint"],help="choose between news, cve and leak")
+    parser.add_argument("--argument",choices=["news","cve","leak","ransom","threat_intel","osint","fake_news"],help="choose between news, cve and leak")
     parser.add_argument("--verbose",help="For more details",action="store_true")
     parser.add_argument("--keyword", default="", help="Filter by keyword in the title")
     parser.add_argument("--start-date", help="Filter from this date (in 'YYYY-MM-DD' format)")

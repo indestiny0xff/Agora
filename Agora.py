@@ -177,7 +177,7 @@ fake_news_feeds = {
     "Epochtime": "https://www.epochtimes.fr/feed",
     "Bvoltaire": "https://www.bvoltaire.fr/feed/",
     "Breizh-info": "https://www.breizh-info.com/feed/",
-    "RTEspagne""https://actualidad.rt.com/feeds/all.rss",
+    "RTEspagne": "https://actualidad.rt.com/feeds/all.rss",
     "Agoravox": "https://feeds.feedburner.com/agoravox/gEOF",
     "Aktuelle-nachrichten": "https://aktuelle-nachrichten.app/feed/",
     "Alpenschau": "https://alpenschau.com/feed/",

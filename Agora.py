@@ -82,6 +82,7 @@ osint_feeds = {
 }
 
 threat_intel_feeds = {
+    "purpl3f0xsecur1ty": "https://www.purpl3f0xsecur1ty.tech/feed",
     "Harfanglab": "https://harfanglab.io/en/insidethelab/feed/",
     "Kelacyber": "https://www.kelacyber.com/feed/",
     "Malwarebytes": "https://www.malwarebytes.com/blog/feed/index.xml",

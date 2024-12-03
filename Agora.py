@@ -82,6 +82,9 @@ osint_feeds = {
 }
 
 threat_intel_feeds = {
+    "Falconforce": "https://falconforce.nl/feed/",
+    "Redcanary": "https://redcanary.com/feed",
+    "Cybereason": "https://www.cybereason.com/blog/rss.xml",
     "Cybergeek": "https://cybergeeks.tech/feed/",
     "Purpl3f0xsecur1ty": "https://www.purpl3f0xsecur1ty.tech/feed",
     "Harfanglab": "https://harfanglab.io/en/insidethelab/feed/",

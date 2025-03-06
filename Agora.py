@@ -19,6 +19,12 @@ agora_ascii_art = """
 """
 
 news_feeds = {
+    "Sucuri": "https://blog.sucuri.net/feed",
+    "Ecleticiq": "https://blog.eclecticiq.com/rss.xml",
+    "Proofpoint": "https://www.proofpoint.com/us/rss.xml",
+    "Silentpush": "https://www.silentpush.com/feed/",
+    "Securityscorecard": "https://securityscorecard.com/feed/",
+    "Welivesecurity": "https://www.welivesecurity.com/feed",
     "Therecordmedia": "https://therecord.media/feed",
     "TheCyberExpress": "https://thecyberexpress.com/feed/",
     "Securityaffairs": "https://securityaffairs.com/feed",

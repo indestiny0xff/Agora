@@ -131,6 +131,16 @@ threat_intel_feeds = {
     "Risky": "https://news.risky.biz/rss/"
 }
 
+disinfo_feeds = {
+    "Lawfarmedia": "https://www.lawfaremedia.org/feeds/cybersecurity-tech",
+    "Cybercom.mil": "https://www.cybercom.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=848&isdashboardselected=0&max=20",
+    "USDepartment": "https://2021-2025.state.gov/feed/",
+    "Internationalaffairs": "https://www.internationalaffairs.org.au/feed",
+    "Aljazeera": "https://www.aljazeera.com/xml/rss/all.xml",
+    "Rferl": "https://www.rferl.org/api/",
+    "Europeanwesternbalkans": "https://europeanwesternbalkans.com/feed/"
+}
+
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, json_output=False, page_size=10):
     try:
         feed = feedparser.parse(rss_url)
@@ -367,6 +377,24 @@ def main():
                 print()
             if args.json and source_results:
                 results.extend(source_results)
+               
+    if args.argument == "disinfo":
+        disinfo_sources = disinfo_feeds.keys()
+        for source in osint_sources:
+            osint_url = osint_feeds[source]
+            start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
+            end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
+            if args.keyword:
+                print(colored(f"⚠️📰 Results from Disinfo source '{source}' with the keyword '{args.keyword}':", "light_blue"))
+                source_results = display_filtered_feed(disinfo_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
+                print()
+            else:
+                print(colored(f"⚠️📰 Results from Disinfo source '{source}':", "light_blue"))
+                source_results = display_filtered_feed(disinfo_url, args.keyword, start_date, end_date, verbose=args.verbose, json_output=args.json)
+                print()
+            if args.json and source_results:
+                results.extend(source_results)
+               
 
     if args.json and results:
         with open(f'{filename}.json', 'w') as json_file:

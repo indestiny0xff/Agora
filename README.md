@@ -42,7 +42,7 @@ python Agora.py --argument leak --start-date "2023-01-01"
 
 This command will provide information about data breaches and leaks reported in 2023 with verbose descriptions.  
 
-### Example 4: Monitor Ransomware
+### Example 4: Track Ransomware
 
 ```bash
 python Agora.py --argument ransom --keyword "LockBit" --start-date "2023-01-01" 
@@ -50,7 +50,7 @@ python Agora.py --argument ransom --keyword "LockBit" --start-date "2023-01-01"
 
 This command will show ransomware attacks involving the LockBit variant reported in 2023 with detailed information.  
 
-### Example 5: Monitor Threat intel
+### Example 5: Gather Threat Intelligence
 
 ```bash
 python Agora.py --argument threat_intel --start-date "2024-01-01" 
@@ -58,7 +58,7 @@ python Agora.py --argument threat_intel --start-date "2024-01-01"
 
 This command will show threat intel articles. 
 
-### Example 6: Monitor OSINT
+### Example 6: Retrieve OSINT Reports
 
 ```bash
 python Agora.py --argument osint --start-date "2024-01-01" 

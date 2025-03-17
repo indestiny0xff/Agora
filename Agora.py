@@ -134,11 +134,16 @@ threat_intel_feeds = {
 disinfo_feeds = {
     "Lawfarmedia": "https://www.lawfaremedia.org/feeds/cybersecurity-tech",
     "Cybercom.mil": "https://www.cybercom.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=848&isdashboardselected=0&max=20",
-    "USDepartment": "https://2021-2025.state.gov/feed/",
     "Internationalaffairs": "https://www.internationalaffairs.org.au/feed",
     "Aljazeera": "https://www.aljazeera.com/xml/rss/all.xml",
     "Rferl": "https://www.rferl.org/api/",
-    "Europeanwesternbalkans": "https://europeanwesternbalkans.com/feed/"
+    "Europeanwesternbalkans": "https://europeanwesternbalkans.com/feed/",
+    "Disinfo.eu": "https://www.disinfo.eu/feed/",
+    "Cyabra": "https://cyabra.com/feed/",
+    "Euvsdisinfo": "https://euvsdisinfo.eu/feed/",
+    "Misinforeview": "https://misinforeview.hks.harvard.edu/feed/atom/",
+    "Knowbe4": "https://blog.knowbe4.com/rss.xml",
+    "Nato": "https://rss.app/feeds/smz3GUMjNo2rVqmJ.xml",
 }
 
 def display_filtered_feed(rss_url, keyword, start_date=None, end_date=None, verbose=False, json_output=False, page_size=10):

@@ -76,7 +76,7 @@ This command will show disinformation articles.
 
 ### Command-Line Arguments
 
-    --argument: Choose between news, cve, leak, ransom, threat_intel or osint.
+    --argument: Choose between news, cve, leak, ransom, threat_intel,osint, disinfo.
     --keyword: Filter articles by a specific keyword.
     --start-date: Filter starting from this date (YYYY-MM-DD).
     --end-date: Filter until this date (YYYY-MM-DD).

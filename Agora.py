@@ -380,8 +380,8 @@ def main():
                
     if args.argument == "disinfo":
         disinfo_sources = disinfo_feeds.keys()
-        for source in osint_sources:
-            osint_url = osint_feeds[source]
+        for source in disinfo_sources:
+            disinfo_url = disinfo_feeds[source]
             start_date = datetime.strptime(args.start_date, "%Y-%m-%d") if args.start_date else None
             end_date = datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else None
             if args.keyword:

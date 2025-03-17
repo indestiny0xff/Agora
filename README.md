@@ -29,7 +29,7 @@ python Agora.py --argument news --keyword "Sandworm" --start-date "2023-01-01" -
 ### Example 2: Explore CVEs
 
 ```bash
-python Agora.py --argument cve --keyword "Fortinet" --start-date "2023-01-01" --end-date "2023-12-31" 
+python Agora.py --argument cve --keyword "Fortinet" --start-date "2023-01-01" 
 ```
 
 This command will display CVEs related to exploits reported in 2023 with detailed descriptions.
@@ -37,7 +37,7 @@ This command will display CVEs related to exploits reported in 2023 with detaile
 ### Example 3: Investigate Leaks
 
 ```bash
-python Agora.py --argument leak --start-date "2023-01-01" --end-date "2023-12-31" 
+python Agora.py --argument leak --start-date "2023-01-01" 
 ```
 
 This command will provide information about data breaches and leaks reported in 2023 with verbose descriptions.  
@@ -45,7 +45,7 @@ This command will provide information about data breaches and leaks reported in 
 ### Example 4: Monitor Ransomware
 
 ```bash
-python Agora.py --argument ransom --keyword "LockBit" --start-date "2023-01-01" --end-date "2023-12-31" 
+python Agora.py --argument ransom --keyword "LockBit" --start-date "2023-01-01" 
 ```
 
 This command will show ransomware attacks involving the LockBit variant reported in 2023 with detailed information.  
@@ -53,7 +53,7 @@ This command will show ransomware attacks involving the LockBit variant reported
 ### Example 5: Monitor Threat intel
 
 ```bash
-python Agora.py --argument threat_intel --start-date "2024-01-01" --end-date "2024-06-31" 
+python Agora.py --argument threat_intel --start-date "2024-01-01" 
 ```
 
 This command will show threat intel articles. 
@@ -61,7 +61,7 @@ This command will show threat intel articles.
 ### Example 6: Monitor OSINT
 
 ```bash
-python Agora.py --argument osint --start-date "2024-01-01" --end-date "2024-06-31" 
+python Agora.py --argument osint --start-date "2024-01-01" 
 ```
 
 This command will show OSINT articles.
@@ -69,7 +69,7 @@ This command will show OSINT articles.
 ### Example 7: Monitor Disinformation
 
 ```bash
-python Agora.py --argument disinfo --start-date "2024-01-01" --end-date "2024-06-31" 
+python Agora.py --argument disinfo --start-date "2024-01-01" 
 ```
 
 This command will show disinformation articles.

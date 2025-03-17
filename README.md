@@ -24,7 +24,7 @@ AGORA is user-friendly and straightforward! Simply run the program with a few co
 
 ### Example 1: Fetch Cybersecurity News
 ```bash
-python Agora.py --argument news --keyword "Sandworm" --start-date "2023-01-01" --end-date "2024-01-01" 
+python Agora.py --argument news --keyword "Sandworm" --start-date "2023-01-01" 
 ```
 ### Example 2: Explore CVEs
 

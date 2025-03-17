@@ -16,6 +16,8 @@ Welcome to AGORA, your one-stop destination for all things cybersecurity! 🚀
 
 - **Open Source Intelligence (OSINT)! 🧠**: Access a wealth of OSINT articles to enhance your understanding of current cyber threats and trends.
 
+- **Disinformation Watch! 🏴‍☠️**: Track and analyze disinformation campaigns, propaganda tactics, and misinformation trends from credible sources to stay informed and vigilant.
+
 ## How to Use AGORA?
 
 AGORA is user-friendly and straightforward! Simply run the program with a few command-line arguments to access a wealth of cybersecurity information. Here's a sneak peek:
@@ -63,6 +65,14 @@ python Agora.py --argument osint --start-date "2024-01-01" --end-date "2024-06-3
 ```
 
 This command will show OSINT articles.
+
+### Example 7: Monitor Disinformation
+
+```bash
+python Agora.py --argument disinfo --start-date "2024-01-01" --end-date "2024-06-31" 
+```
+
+This command will show disinformation articles.
 
 ### Command-Line Arguments
 

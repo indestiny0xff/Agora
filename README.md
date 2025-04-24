@@ -2,6 +2,16 @@
 
 Welcome to AGORA, your one-stop destination for all things cybersecurity! 🚀
 
+## Installation
+
+To install the required dependencies, simply run:
+
+```bash
+git clone https://github.com/WOthm/Agora.git
+cd Agora
+pip install -r requirements.txt
+```
+
 ## What Does AGORA Offer?
 
 - **News Galore! 📰**: Dive into the latest cybersecurity news from renowned sources like TheHackerNews, Threatpost, KrebsOnSecurity, and many more!
@@ -83,20 +93,8 @@ This command will show disinformation articles.
     --verbose: For more detailed information. ( not necessarily useful)
 
 
-## Installation
 
-To install the required dependencies, simply run:
 
-```bash
-git clone https://github.com/WOthm/Agora.git
-cd Agora
-pip install -r requirements.txt
-```
-Let AGORA Be Your Cyber Guide!
-
-So, why wait? Let AGORA be your cyber guide in this vast digital wilderness.
-
-Happy Exploring with AGORA! 🚀🔍
 
 
 

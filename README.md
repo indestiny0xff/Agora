@@ -1,6 +1,6 @@
 # AGORA - Your Cybersecurity Info Companion! 🛡️🌐
 
-Welcome to AGORA, your one-stop destination for all things cybersecurity! 🚀
+Welcome to AGORA, your one-stop destination for monitoring all cybersecurity events ! 🚀
 
 ## Installation
 

@@ -128,7 +128,7 @@ threat_intel_feeds = {
     "Watchtowr": "https://labs.watchtowr.com/rss/",
     "Intrinsec": "https://www.intrinsec.com/feed/",
     "Sekoia": "https://blog.sekoia.io/feed/",
-    "Risky": "https://news.risky.biz/rss/"
+    "Reliaquest": "https://reliaquest.com/rss.xml"
 }
 
 disinfo_feeds = {
@@ -408,6 +408,7 @@ def main():
 if __name__ == "__main__":
     print()
     main()  
+
 
 
 

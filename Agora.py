@@ -77,9 +77,9 @@ osint_feeds = {
    "Skopenow": "https://www.skopenow.com/news/rss.xml",
    "Geoint": "https://geoint.blog/feed/",
    "Osintcombine": "https://www.osintcombine.com/blog-feed.xml",
-   "Bushidotoken": "https://blog.bushidotoken.net/",
+   "Bushidotoken": "https://blog.bushidotoken.net/", 
    "RedditOSINT": "https://www.reddit.com/r/OSINT/new.rss",
-   "Arxiv": "https://export.arxiv.org/api/query?search_query=cat:cs.CR&sortBy=lastUpdatedDate&sortOrder=descending&max_results=100."
+   "Arxiv": "https://export.arxiv.org/api/query?search_query=cat:cs.CR&sortBy=lastUpdatedDate&sortOrder=descending&max_results=100"
 }
 
 threat_intel_feeds = {
@@ -409,6 +409,7 @@ def main():
 if __name__ == "__main__":
     print()
     main()  
+
 
 
 
